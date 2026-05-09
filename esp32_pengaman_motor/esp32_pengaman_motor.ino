@@ -1,24 +1,3 @@
-// ================================================================
-// ALAT PENGAMAN MOTOR MENGGUNAKAN ESP32
-// DENGAN KONTROL JARAK JAUH MELALUI TELEGRAM
-// ================================================================
-// Hardware:
-//   - ESP32 DevKit V1 (30 Pin)
-//   - Modul GPS NEO-6M
-//   - Modul GSM SIM800L V2
-//   - Modul Relay 5V 1 Channel
-//   - Regulator Tegangan LM2596
-//   - Aki Motor 12V
-// ================================================================
-// Wiring:
-//   SIM800L TX -> ESP32 GPIO26
-//   SIM800L RX -> ESP32 GPIO27
-//   GPS TX     -> ESP32 GPIO16
-//   GPS RX     -> ESP32 GPIO17
-//   RELAY IN   -> ESP32 GPIO15
-//   LED        -> ESP32 GPIO2 (built-in)
-// ================================================================
-
 #include <HardwareSerial.h>
 #include <TinyGPS++.h>
 
