@@ -28,6 +28,9 @@ Alat ini dirancang untuk meningkatkan keamanan kendaraan bermotor dengan memanfa
 
 ## Screenshots
 
+### Alat Pengaman Motor
+![Alat Pengaman Motor](screenshots/Alat%20Pengaman%20Motor.jpg)
+
 ### Desain Alat
 ![Desain Alat](screenshots/desain%20alat.jpg)
 
@@ -39,6 +42,14 @@ Alat ini dirancang untuk meningkatkan keamanan kendaraan bermotor dengan memanfa
 
 ### Flowchart Sistem
 ![Flowchart Alur Kerja](screenshots/flowchart.jpg)
+
+---
+
+## 🎬 Video Pengujian
+
+[![Video Pengujian Alat](https://img.youtube.com/vi/wvvGStXH7Ok/maxresdefault.jpg)](https://youtu.be/wvvGStXH7Ok)
+
+🔗 **Tonton video pengujian lengkap:** [https://youtu.be/wvvGStXH7Ok](https://youtu.be/wvvGStXH7Ok)
 
 ---
 
@@ -145,11 +156,12 @@ Pengaman-Motor-ESP32/
 ├── esp32_pengaman_motor/
 │   └── esp32_pengaman_motor.ino   # Kode utama ESP32
 ├── screenshots/
-│   ├── desain alat.jpg            # Diagram rangkaian
+│   ├── Alat Pengaman Motor.jpg       # Foto alat jadi
+│   ├── desain alat.jpg               # Diagram rangkaian
 │   ├── prototipe rancangan alat.jpg  # Foto prototipe alat
 │   ├── skematik rancangan alat.jpg   # Skema pinout
-│   └── flowchart.jpg             # Flowchart alur kerja
-└── README.md                      # Dokumentasi proyek
+│   └── flowchart.jpg                 # Flowchart alur kerja
+└── README.md                         # Dokumentasi proyek
 ```
 
 ---
