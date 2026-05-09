@@ -1,6 +1,6 @@
 # Alat Pengaman Motor Menggunakan ESP32 dengan Kontrol Jarak Jauh Melalui Telegram
 
-Sistem keamanan motor berbasis IoT menggunakan ESP32, GPS NEO-6M, dan SIM800L yang dapat dikontrol jarak jauh melalui **Telegram**, dikembangkan saat **Program Magang di PT Pupuk Sriwidjaja Palembang**.
+Sistem keamanan motor berbasis IoT menggunakan ESP32, GPS NEO-6M, dan SIM800L yang dapat dikontrol jarak jauh melalui **Telegram**. Proyek ini merupakan **Laporan Akhir** sebagai syarat kelulusan.
 
 ---
 
@@ -82,6 +82,24 @@ Alat ini dirancang untuk meningkatkan keamanan kendaraan bermotor dengan memanfa
 
 ---
 
+## ⚠️ Penting: Tentang Backend Server
+
+Proyek ini membutuhkan **server backend (VPS)** sebagai perantara antara ESP32 dan Telegram Bot. Server backend yang digunakan dalam proyek asli bersifat **private dan tidak disertakan** dalam repository ini.
+
+**Yang di-share di repo ini hanya kode Arduino/ESP32 saja.**
+
+Jika kamu ingin menggunakan proyek ini, kamu perlu **mengembangkan backend server sendiri** dengan minimal 2 endpoint:
+- `cmd.php` — Menyimpan & mengirim perintah dari Telegram ke ESP32
+- `update_status.php` — Menerima status/lokasi dari ESP32 dan meneruskan ke Telegram
+
+Lalu ganti URL di kode Arduino:
+```cpp
+constexpr char URL_GET[]  = "http://YOUR-SERVER-IP/cmd.php?clear=1";
+constexpr char URL_POST[] = "http://YOUR-SERVER-IP/update_status.php";
+```
+
+---
+
 ## Cara Menggunakan
 
 ### Prasyarat
@@ -89,6 +107,7 @@ Alat ini dirancang untuk meningkatkan keamanan kendaraan bermotor dengan memanfa
 - **Library** yang dibutuhkan:
   - `TinyGPS++` (untuk GPS NEO-6M)
 - Kartu SIM dengan paket data aktif (untuk SIM800L)
+- Server/VPS sendiri untuk backend (lihat bagian di atas)
 
 ### Langkah-Langkah
 
@@ -106,6 +125,7 @@ git clone https://github.com/AniffXP/Pengaman-Motor-ESP32.git
   ```cpp
   constexpr char APN[] = "internet"; // Ganti sesuai provider
   ```
+- Ganti `YOUR-SERVER-IP` dengan alamat VPS/server backend milikmu
 
 **4. Upload ke ESP32**
 - Pilih board: **ESP32 Dev Module**
@@ -137,17 +157,17 @@ Pengaman-Motor-ESP32/
 ## Alur Kerja Sistem
 
 ```
-Telegram Bot → Server → ESP32 (polling setiap 10 detik)
-                              ↓
-                        Proses Perintah
-                       ↙   ↓    ↓    ↘
-                     /on  /off /lokasi /hilang
-                      ↓    ↓     ↓       ↓
-                   Relay  Relay  GPS   Relay OFF
-                    ON    OFF   Read   + GPS tiap
-                                 ↓     5 menit
-                              Kirim
-                              ke Bot
+Telegram Bot → Server Backend (private) → ESP32 (polling tiap 10 detik)
+                                                ↓
+                                          Proses Perintah
+                                         ↙   ↓    ↓    ↘
+                                       /on  /off /lokasi /hilang
+                                        ↓    ↓     ↓       ↓
+                                     Relay  Relay  GPS   Relay OFF
+                                      ON    OFF   Read   + GPS tiap
+                                                   ↓     5 menit
+                                                Kirim
+                                                ke Bot
 ```
 
 ---
@@ -163,4 +183,4 @@ Telegram Bot → Server → ESP32 (polling setiap 10 detik)
 
 ## 📄 Lisensi
 
-Project ini dibuat untuk keperluan **Laporan Akhir (Kerja Praktik)** di PT Pupuk Sriwidjaja Palembang.
+Project ini merupakan bagian dari **Laporan Akhir** sebagai syarat kelulusan.

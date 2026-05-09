@@ -31,9 +31,10 @@ constexpr int RELAY_PIN = 15;
 constexpr int LED_PIN   = 2;
 
 // Konfigurasi jaringan
+// ⚠️ Ganti URL di bawah dengan alamat server/VPS milikmu sendiri
 constexpr char APN[]      = "internet";
-constexpr char URL_GET[]  = "http://47.236.55.3/cmd.php?clear=1";
-constexpr char URL_POST[] = "http://47.236.55.3/update_status.php";
+constexpr char URL_GET[]  = "http://YOUR-SERVER-IP/cmd.php?clear=1";
+constexpr char URL_POST[] = "http://YOUR-SERVER-IP/update_status.php";
 
 // State fitur kehilangan
 bool fiturKehilanganAktif     = false;
